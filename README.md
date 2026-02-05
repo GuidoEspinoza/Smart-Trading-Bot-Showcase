@@ -46,7 +46,7 @@ A key differentiator of this system is its ability to scale capital efficiently 
 
 ### 🚀 Future Upside: Native TSL Integration
 
-The backtested results assume a static Take Profit. The production bot utilizes Capital.com's native **Server-Side Trailing Stop Loss**.
+The backtested results assume a static Stop Loss. The production bot utilizes Capital.com's native **Server-Side Trailing Stop Loss**.
 *   **Conservative Projection**: +10% Efficiency (~$1.9M Net)
 *   **Trend-Following Projection**: +20% Efficiency (~$2.1M Net)
 
@@ -108,7 +108,7 @@ Un diferenciador clave de este sistema es su capacidad para escalar capital efic
 
 ### 🚀 Potencial Futuro: Integración TSL Nativa
 
-Los resultados del backtest asumen un Take Profit estático. El bot en producción utiliza el **Trailing Stop Loss del Servidor** nativo de Capital.com.
+Los resultados del backtest asumen un Stop Loss estático. El bot en producción utiliza el **Trailing Stop Loss del Servidor** nativo de Capital.com.
 *   **Proyección Conservadora**: +10% Eficiencia (~$1.9M Neto)
 *   **Proyección Tendencial**: +20% Eficiencia (~$2.1M Neto)
 
