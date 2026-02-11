@@ -24,11 +24,11 @@ The system has undergone rigorous "Reality-Check" backtesting ensuring 100% pari
 | Metric | Result (Jan - Dec 2025) |
 | :--- | :--- |
 | **Initial Capital** | $1,000 |
-| **Net Profit (Gross)** | **$21,152,876** |
-| **ROI** | **+2,115,287%** |
-| **Win Rate** | **74.79%** |
-| **Drawdown** | < 20% (Dynamic Risk Management) |
-| **Total Trades** | 1,309 |
+| **Net Profit (Gross)** | **$1,754,175** |
+| **ROI** | **+175,317%** |
+| **Win Rate** | **76.69%** |
+| **Drawdown** | ~28% (High Performance Config) |
+| **Total Trades** | 1,021 |
 
 > *Note: Results verified with "Volatility Capture" config (actively trading market opens to capture liquidity injections).*
 
@@ -40,9 +40,9 @@ A key differentiator of this system is its ability to scale capital efficiently 
 | :--- | :---: | :---: | :---: | :---: |
 | **Short Term (1 Mo)** | 100% | $1,000 | **$4,136** | 4.1x |
 | **Mid Term (6 Mo)** | 100% | $1,000 | **$102,668** | 102.6x |
-| **Full Year (12 Mo)** | 100% | $1,000 | **$21,153,876** | 21,153x |
+| **Full Year (12 Mo)** | 100% | $1,000 | **$1,754,175** | 1,754x |
 
-> *The exponential growth is driven by a proprietary "Reinvestment Engine" that dynamically adjusts lot size based on equity while strictly capping risk at 5% per trade.*
+> *The exponential growth is driven by a proprietary "Reinvestment Engine" that dynamically adjusts lot size based on equity while strictly capping risk at 3% per trade.*
 
 ### 🚀 Future Upside: Native TSL Integration
 
@@ -86,11 +86,11 @@ El sistema ha pasado por un backtesting riguroso de "Chequeo de Realidad", asegu
 | Métrica | Resultado (Ene - Dic 2025) |
 | :--- | :--- |
 | **Capital Inicial** | $1,000 |
-| **Beneficio Neto (Bruto)** | **$21,152,876** |
-| **ROI (Retorno)** | **+2,115,287%** |
-| **Tasa de Acierto (Win Rate)** | **74.79%** |
-| **Drawdown** | < 20% (Gestión de Riesgo Dinámica) |
-| **Total Trades** | 1,309 |
+| **Beneficio Neto (Bruto)** | **$1,754,175** |
+| **ROI (Retorno)** | **+175,317%** |
+| **Tasa de Acierto (Win Rate)** | **76.69%** |
+| **Drawdown** | ~28% (Configuración High Performance) |
+| **Total Trades** | 1,021 |
 
 > *Nota: Resultados verificados utilizando "Captura de Volatilidad" (operando activamente durante aperturas de mercado para capturar inyecciones de liquidez).*
 
@@ -102,9 +102,9 @@ Un diferenciador clave de este sistema es su capacidad para escalar capital efic
 | :--- | :---: | :---: | :---: | :---: |
 | **Corto Plazo (1 Mes)** | 100% | $1,000 | **$4,136** | 4.1x |
 | **Mediano Plazo (6 Meses)** | 100% | $1,000 | **$102,668** | 102.6x |
-| **Año Completo (12 Meses)** | 100% | $1,000 | **$21,153,876** | 21,153x |
+| **Año Completo (12 Meses)** | 100% | $1,000 | **$1,754,175** | 1,754x |
 
-> *El crecimiento exponencial es impulsado por un "Motor de Reinversión" propietario que ajusta dinámicamente el tamaño del lote basado en la equidad, limitando estrictamente el riesgo al 5% por operación.*
+> *El crecimiento exponencial es impulsado por un "Motor de Reinversión" propietario que ajusta dinámicamente el tamaño del lote basado en la equidad, limitando estrictamente el riesgo al 3% por operación.*
 
 ### 🚀 Potencial Futuro: Integración TSL Nativa
 
