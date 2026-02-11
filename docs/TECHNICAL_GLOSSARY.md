@@ -1,4 +1,118 @@
-# 📚 Glosario Técnico y Guía de Indicadores
+# 📚 Technical Glossary & Indicator Guide
+
+> **Choose Language / Elige Idioma**: [🇺🇸 English](#-english-version) | [🇪🇸 Español](#-versión-en-español)
+
+---
+
+## 🇺🇸 English Version
+
+This detailed guide explains the technical concepts, indicators, and metrics used by the `Smart Trading Bot`. It is designed to be clear, educational, and practice-oriented.
+
+---
+
+## 📈 1. Trading Indicators (src/indicators/indicators.py)
+
+These are the bot's "eyes". They allow it to interpret the market and take objective decisions.
+
+### 🔹 ADX (Average Directional Index)
+*   **What is it?**: A gauge of **trend strength**, regardless of direction.
+*   **Range**: 0 to 100.
+*   **Interpretation**:
+    *   **< 20**: Ranging market or weak trend (bot usually avoids trading here).
+    *   **> 25**: Established strong trend (Ideal zone for trend strategies).
+    *   **> 50**: Extremely strong trend (Possible exhaustion).
+*   **Bot Usage**: Used as a primary filter. If ADX is low, bot assumes no strength to move price and may abstain from entering.
+
+### 🔹 RSI (Relative Strength Index)
+*   **What is it?**: An oscillator measuring speed and change of price movements.
+*   **Range**: 0 to 100.
+*   **Interpretation**:
+    *   **Overbought (> 70)**: Price rose too much too fast; could correct down.
+    *   **Oversold (< 30)**: Price fell too much too fast; could bounce up.
+    *   **Level 50**: Border between bullish (>50) and bearish (<50) trend.
+*   **Bot Usage**: Used to confirm entries (don't buy overbought) and, crucially, to detect **Divergences**.
+
+### 🔹 Divergences (RSI vs Price)
+*   **What are they?**: When price and RSI disagree. A powerful reversal signal.
+*   **Cases**:
+    *   **Bullish Divergence**: Price makes lower low, RSI makes higher low. (BUY Signal).
+    *   **Bearish Divergence**: Price makes higher high, RSI makes lower high. (SELL Signal).
+*   **Bot Usage**: One of the strongest entry signals (High Confluence).
+
+### 🔹 EMA (Exponential Moving Average)
+*   **What is it?**: A line smoothing price, giving more weight to recent data (unlike simple moving average).
+*   **Bot Usage**:
+    *   **EMA Cross**: Uses a fast (e.g., 9) and slow (e.g., 21).
+    *   Fast crosses up Slow = Bullish Trend.
+    *   Fast crosses down Slow = Bearish Trend.
+
+### 🔹 ATR (Average True Range)
+*   **What is it?**: Measures market **volatility** in pips/points. Doesn't tell direction, only how much price moves.
+*   **Bot Usage**: Vital for risk management.
+    *   **Dynamic Stop Loss**: SL is not fixed (e.g., 50 pips), but based on ATR (e.g., 1.5x current ATR). If market is volatile, SL widens; if calm, tightens.
+
+### 🔹 Order Blocks
+*   **What are they?**: Price zones where large institutions (banks, funds) left pending orders. Act as magnets and strong bounce zones.
+*   **Interpretation**:
+    *   If price returns to an old bullish Order Block, it likely bounces up.
+*   **Bot Usage**: Detected via fractals and used as high-probability zones for Entries and Take Profits.
+
+### 🔹 VWAP (Volume Weighted Average Price)
+*   **What is it?**: Average price weighted by volume. The "fair price" of the day based on real money traded.
+*   **Interpretation**:
+    *   Price above VWAP = Bullish Sentiment.
+    *   Price below VWAP = Bearish Sentiment.
+*   **Bot Usage**: Intraday trend filter. Bot prefers buying if above VWAP.
+
+### 🔹 Ichimoku Cloud
+*   **What is it?**: Complete system showing support, resistance, trend, and momentum in one chart.
+*   **Bot Usage**: Mainly the "Cloud" (Kumo).
+    *   Price above Cloud = Strong Bullish Trend.
+    *   Price below Cloud = Strong Bearish Trend.
+    *   Price inside Cloud = Noise/Uncertainty Zone.
+
+---
+
+## 📊 2. Financial Concepts & Metrics
+
+Key terms to understand performance reports.
+
+### 💰 ROI (Return on Investment)
+*   **Meaning**: Return on Investment.
+*   **Formula**: `(Net Profit / Initial Capital) * 100`
+*   **Example**: Start with $500, gain $500, ROI is 100%.
+
+### 📉 Drawdown (DD)
+*   **Meaning**: Max drop from capital peak to valley. Measures ruin risk or "pain" to endure.
+*   **Example**: Account goes to $1000 then drops to $900 before rising, DD is 10% ($100).
+*   **Important**: Low DD is better. Bot seeks to keep DD controlled by managing risk per trade (max 3-5%).
+
+### ⚖️ Breakeven
+*   **Meaning**: Moving Stop Loss to entry price to eliminate risk.
+*   **Usage**: "Moving to Breakeven" means if market turns, you exit with $0 profit/loss (minus fees), protecting capital.
+
+### 🎯 Win Rate
+*   **Meaning**: Percentage of winning trades over total.
+*   **Context**: High Win Rate (70%+) is great, but must pair with good Risk/Reward.
+*   **Formula**: `(Winning Trades / Total Trades) * 100`
+
+### 🛡️ Trailing Stop Loss
+*   **Meaning**: Stop Loss that "chases" price. If price moves in favor, SL moves up automatically to secure gains.
+*   **Benefit**: Allows letting gains run in strong trends without risk of giving it all back.
+
+---
+
+## 🚀 How to use this info
+Reading bot logs or reports:
+1.  Look for indicator confluence (e.g., "RSI Divergence + EMA Cross").
+2.  Watch **ADX** to know if it's good time for trends.
+3.  Monitor **Drawdown** to ensure risk management works.
+
+---
+
+# 📚 Glosario Técnico y Guía de Indicadores (Español)
+
+## 🇪🇸 Versión en Español
 
 Esta guía detallada explica los conceptos técnicos, indicadores y métricas utilizados por el `Smart Trading Bot`. Está diseñada para ser clara, didáctica y orientada a la práctica.
 

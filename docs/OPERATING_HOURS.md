@@ -1,4 +1,75 @@
-# 🕒 Horarios de Operación y Sesiones de Mercado
+# 🕒 Operating Hours & Market Sessions
+
+> **Choose Language / Elige Idioma**: [🇺🇸 English](#-english-version) | [🇪🇸 Español](#-versión-en-español)
+
+---
+
+## 🇺🇸 English Version
+
+Centralized documentation of all **Smart-Trading-Bot** operating schedules.
+All internal bot schedules run in **UTC (Coordinated Universal Time)** to avoid discrepancies.
+
+This document includes conversion to **Chile Time** (Continental).
+
+---
+
+## 🌎 Quick Conversion Table
+
+| Time Zone | Code | Diff from UTC |
+| :--- | :---: | :---: |
+| **UTC (Bot)** | UTC | +0 |
+| **Chile Winter** | CLT (UTC-4) | -4 hours |
+| **Chile Summer** | CLST (UTC-3) | -3 hours |
+
+> **Note:** Chile DST usually runs from **first Saturday of September** to **first Saturday of April**.
+
+---
+
+## ⚙️ General Bot Schedules
+
+These are "master switches" configured in `src/config/core_config.py`.
+
+| Setting | UTC Value | Description |
+| :--- | :---: | :--- |
+| **Operating Cycle** | **00:00 - 24:00** | Bot is active 24h, but respects specific market closes. |
+| **Daily Reset** | **00:00 UTC** | Resets counters and checks daily profit target. |
+| **Friday Close** | **21:55 UTC** | **Forced Close** of all trades before weekend. |
+
+---
+
+## 🕒 Production Hours ("Volatility Capture")
+
+The bot operates under a **Volatility Capture** configuration. This means:
+1.  **Does NOT trade 24/7 indiscriminately.**
+2.  Focuses on **maximum liquidity** and **volatility** windows (Opens).
+3.  **Does not avoid** market opens, seeking to capitalize on strong initial moves.
+
+### Active Windows Table (UTC)
+
+| Market | Operating Window (UTC) | Description |
+| :--- | :---: | :--- |
+| **Forex Major** | **06:00 - 20:00** | Covers London + Full New York. |
+| **Metales (Gold/Silver)** | **07:00 - 20:00** | Max metal volatility. |
+| **US Indices (US30/100)** | **13:00 - 22:00** | American Session (Includes 14:30 open). |
+| **EU Indices (DAX/FTSE)** | **07:00 - 16:00** | European Session (Includes 08:00 open). |
+| **Asia (J225/HK50)** | **00:00 - 08:00** | Asian Session (Full Session). |
+| **Crypto** | **24/7** | No restrictions (except maintenance). |
+
+> **Note:** These hours are hardcoded in `src/config/symbols_config.py` ensuring bot never trades outside safe zones.
+
+---
+
+## 📅 Operating Days
+
+*   **Monday to Thursday:** Normal Operation.
+*   **Friday:** Total close at **21:55 UTC**.
+*   **Saturday & Sunday:** Operation **DISABLED** (Crypto also stops if `TRADE_ON_WEEKENDS = False`).
+
+---
+
+# 🕒 Horarios de Operación y Sesiones de Mercado (Español)
+
+## 🇪🇸 Versión en Español
 
 Documentación centralizada de todos los horarios operativos del **Smart-Trading-Bot**.
 Todos los horarios internos del bot funcionan en **UTC (Tiempo Universal Coordinado)** para evitar discrepancias.
@@ -58,14 +129,3 @@ El bot opera bajo una configuración de **Captura de Volatilidad**. Esto signifi
 *   **Lunes a Jueves:** Operativa Normal (respetando ventanas de bloqueo).
 *   **Viernes:** Cierre total a las **21:55 UTC** (17:55 / 18:55 Chile).
 *   **Sábado y Domingo:** Operativa **DESACTIVADA** (Crypto también se detiene si `TRADE_ON_WEEKENDS = False`).
-
----
-
-### Resumen de Rutina Diaria (Chile)
-
-1.  **20:00 CLST (00:00 UTC):** Inicio del "Día Bot". Se resetea la meta de ganancias.
-2.  **21:30 CLST:** Posible inicio sesión Asia (si activo).
-3.  **03:00 CLST:** Apertura ventanas Forex (Londres).
-4.  **10:30 CLST:** Apertura Índices USA.
-5.  **17:00 CLST:** Cierre ventanas Metales/Forex.
-6.  **17:55 CLST:** Cierre de Mercados USA y fin de sesión operativa.

@@ -1,8 +1,114 @@
-# Estrategia de Trading: Confluencia de Indicadores
+# Trading Strategy: Indicator Confluence
+
+> **Choose Language / Elige Idioma**: [🇺🇸 English](#-english-version) | [🇪🇸 Español](#-versión-en-español)
+
+---
+
+## 🇺🇸 English Version
+
+The bot uses a single but powerful trading strategy based on the principle of **confluence**. Instead of relying on one or two indicators, the system simultaneously evaluates a set of up to 9 market conditions to measure the strength of a potential trading signal.
+
+## What is Confluence?
+
+Confluence in trading is the alignment of multiple technical factors pointing in the same direction (bullish or bearish). A signal backed by several uncorrelated indicators is considered higher probability than an isolated signal.
+
+Our strategy quantifies this concept through a **scoring system**.
+
+## The Scoring System (Confluence Score)
+
+For each data candle, the bot calculates two independent scores:
+
+- **Bullish Score**: A number from 0 to 9 indicating how many bullish conditions are met.
+- **Bearish Score**: A number from 0 to 9 indicating how many bearish conditions are met.
+
+A trade is only considered if one of these scores reaches a predefined threshold.
+
+### The Confluence Threshold (`CONFLUENCE_THRESHOLD`)
+
+This is the most important variable of the strategy, defined in `src/config/profiles.py`.
+
+- **Definition**: The minimum score that must be reached for a `BUY` or `SELL` signal to be valid.
+- **Purpose**: Acts as a **quality filter**. A higher threshold (e.g., 5) means the bot will be more selective and only trade on the strongest signals.
+- **Optimal Configuration (Validated)**: `5`. This value has shown to offer the best balance between frequency and profitability (Win Rate 75%+).
+
+## Scoring Conditions
+
+Scores are built by adding 1 point for each of the following conditions met. Below describes the logic for the **bullish** score. Bearish logic is simply the inverse.
+
+1.  **Market Structure (Higher Highs & Higher Lows)**
+    - **Condition**: Current high > high 5 candles ago AND current low > low 5 candles ago.
+    - **Purpose**: Confirms price is forming an uptrend micro-structure.
+
+2.  **Moving Average Trend (EMAs)**
+    - **Condition**: Close price > Fast EMA (e.g., 20) AND Fast EMA > Slow EMA (e.g., 50).
+    - **Purpose**: Ensures trading aligns with immediate and short-term trend.
+
+3.  **Ichimoku Cloud**
+    - **Condition**: Close price > Senkou Span A AND > Senkou Span B.
+    - **Purpose**: Uses the cloud as a dynamic support/resistance zone to confirm trend strength.
+
+4.  **MACD Momentum**
+    - **Condition**: MACD line > Signal line.
+    - **Purpose**: Measures short-term momentum, indicating reduced bearish pressure or increasing bullish pressure.
+
+5.  **MACD Histogram**
+    - **Condition**: MACD histogram is positive and growing (current bar > previous).
+    - **Purpose**: Confirms positive momentum acceleration.
+
+6.  **Relative Strength (RSI)**
+    - **Condition**: RSI > 50.
+    - **Purpose**: Indicates recent bullish moves are stronger than bearish ones.
+
+7.  **Bullish Divergence (RSI)**
+    - **Condition**: Price makes lower low while RSI makes higher low.
+    - **Purpose**: Identifies potential trend exhaustion and imminent reversal. High-quality signal.
+
+8.  **Directional Relative Volume (RVOL)**
+    - **Condition**: Current volume significantly higher than average (e.g. > 1.5x) AND candle is bullish (close > open).
+    - **Purpose**: Confirms institutional conviction behind the move. Volume must support price direction.
+
+9.  **Adaptive Trend Strength (ADX)**
+    - **Condition**: ADX is above dynamic session threshold (`ADX_TREND_THRESHOLD`).
+      - _Asia_: > 18
+      - _London/NY_: > 25
+      - _Default_: > 20
+    - **Purpose**: Avoids trading in chop/sideways markets, ensuring genuine trend exists.
+
+## "Lock in Profit & Ride" Philosophy
+
+The bot uses a **Scaled Exits (33/33/33)** strategy to balance security with massive profit potential.
+
+1.  **TP1 (33% @ 0.75R)**:
+    - **Objective**: Secure. Closes first third quickly.
+    - **Effect**: Drastically reduces monetary risk and covers spread/commissions. Generates constant cash flow.
+
+2.  **TP2 (33% @ 1.50R)**:
+    - **Objective**: Capitalize. Closes second third in main expansion.
+    - **Effect**: Locks in substantial profit before potential pullbacks.
+
+3.  **TP3 (34% Runner @ Trailing Stop)**:
+    - **Objective**: Ride. Last third has no fixed TP. Activates dynamic **Trailing Stop**.
+    - **Effect**: Captures "Home Runs" (moves of 5R, 10R+) during high volatility. In strong trends, this 34% can generate more profit than the rest combined.
+
+## Decision Example
+
+- `GOLD` analyzed on `15M` timeframe.
+- All indicators calculated.
+- Bot determines 7 of 9 bullish conditions met -> `Bullish Score = 7`.
+- 1 of 9 bearish conditions met -> `Bearish Score = 1`.
+- `CONFLUENCE_THRESHOLD` is `5`.
+- Since `Bullish Score (7)` >= `CONFLUENCE_THRESHOLD (5)`, signals **`BUY`**.
+- If score was 4, decision would be `HOLD`.
+
+---
+
+# Estrategia de Trading: Confluencia de Indicadores (Español)
+
+## 🇪🇸 Versión en Español
 
 El bot utiliza una única pero poderosa estrategia de trading basada en el
 principio de **confluencia**. En lugar de depender de uno o dos indicadores, el
-sistema evalúa simultáneamente un conjunto de hasta 7 condiciones del mercado
+sistema evalúa simultáneamente un conjunto de hasta 9 condiciones del mercado
 para medir la fuerza de una posible señal de trading.
 
 ## ¿Qué es la Confluencia?
@@ -19,9 +125,9 @@ puntuación**.
 
 Para cada vela de datos, el bot calcula dos puntuaciones independientes:
 
-- **Puntuación Alcista (Bullish Score)**: Un número de 0 a 7 que indica cuántas
+- **Puntuación Alcista (Bullish Score)**: Un número de 0 a 9 que indica cuántas
   condiciones alcistas se están cumpliendo.
-- **Puntuación Bajista (Bearish Score)**: Un número de 0 a 7 que indica cuántas
+- **Puntuación Bajista (Bearish Score)**: Un número de 0 a 9 que indica cuántas
   condiciones bajistas se están cumpliendo.
 
 Una operación solo se considera si una de estas puntuaciones alcanza un umbral
@@ -38,7 +144,7 @@ Esta es la variable más importante de la estrategia, definida en
   significa que el bot será más selectivo y solo operará en las señales más
   fuertes.
 - **Configuración Óptima (Validada)**: `5`. Este valor ha demostrado ofrecer el
-  mejor equilibrio entre frecuencia y rentabilidad (Win Rate 80%+).
+  mejor equilibrio entre frecuencia y rentabilidad (Win Rate 75%+).
 
 ## Condiciones de Puntuación
 

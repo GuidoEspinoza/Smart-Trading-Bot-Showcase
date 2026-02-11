@@ -1,4 +1,114 @@
-# Arquitectura del Bot de Trading
+# Trading Bot Architecture
+
+> **Choose Language / Elige Idioma**: [🇺🇸 English](#-english-version) | [🇪🇸 Español](#-versión-en-español)
+
+---
+
+## 🇺🇸 English Version
+
+The bot is designed with a modular, decoupled architecture, centered around a
+decision core (`Bot`) that orchestrates all other components. The workflow follows
+a clear lifecycle for each market analysis cycle.
+
+## Decision Flow Diagram
+
+```mermaid
+graph TD
+    A[▶️ Start Analysis Cycle] --> B{Load Configuration};
+    B --> C[For Each Symbol...];
+    C --> D{Within Trading Hours?};
+    D -- No --> C;
+    D -- Yes --> E[Fetch Market Data];
+    E --> F[Calculate Technical Indicators];
+    F --> G[Calculate Confluence Scores];
+    G --> H{Score >= Threshold?};
+    H -- No (HOLD) --> C;
+    H -- Yes (BUY/SELL) --> I[Calculate Risk Management];
+    I --> J[Open Position via Exchange Client];
+    J --> C;
+```
+
+## Core Components
+
+1.  **Entry Point (`main.py`)**
+    - Initializes the `FastAPI` web server to expose monitoring endpoints (e.g.,
+      `/health`).
+    - Creates and starts a unique main instance of the `Bot` in a background thread,
+      which becomes the brain of the application.
+
+2.  **Bot Core (`src/core/bot.py`)**
+    - **`Bot` class**: The main class containing the analysis loop (`_run_logic_loop`).
+    - **Configuration Loading**: On startup, loads all strategic configurations
+      from `src/config/` and credentials from the `.env` file.
+    - **Analysis Cycle**: Iterates over the list of symbols (`SYMBOLS`) defined in
+      the configuration.
+    - **Schedule Control**: Checks if the current time is within allowed trading
+      windows for the symbol before proceeding. Includes a **Friday Close Window**
+      (21:55 UTC) that halts entries and closes open positions to avoid weekend
+      gaps (if `TRADE_ON_WEEKENDS=False`).
+    - **Orchestration**: Calls indicator components and the trading client to
+      fetch data and execute orders.
+    - **Active Management (Parallel Thread)**: Runs an independent thread
+      (`_run_monitor`) that monitors open positions every 1 second to apply
+      partial close logic and trailing stops without blocking market analysis.
+
+3.  **Configuration (`src/config/`)**
+    - **`core_config.py`**: Contains central strategic configuration: symbol list,
+      timeframes, confluence threshold (`CONFLUENCE_THRESHOLD`), risk per trade,
+      and risk/reward ratio.
+    - **`symbols_config.py`**: Defines symbol-specific parameters, such as optimal
+      trading hours.
+    - **`market_hours_config.py`**: Defines global market open and close times.
+
+4.  **Indicators and Strategy (`src/indicators/`)**
+    - **`add_all_indicators`**: Main function that receives a market DataFrame
+      and appends all necessary technical indicator columns (EMAs, MACD, RSI,
+      Ichimoku, etc.).
+    - **`_calculate_confluence_scores`**: (Private method of `Bot`) Once
+      indicators are calculated, this method evaluates them and generates a
+      **bullish score** and a **bearish score** (from 0 to 8). This is the
+      central piece of the decision logic.
+
+5.  **Trading Client (`src/trading_client/`)**
+    - Abstracts communication with different exchanges (Capital.com, Bybit).
+    - Provides a unified interface with methods like `get_market_data`,
+      `open_position`, `get_account_balance`, etc.
+    - The `Bot` uses this client without needing to know which exchange it is
+      connecting to, making the system extensible.
+
+6.  **Utilities (`src/utils/`)**
+    - **`risk_management.py`**: Contains crucial logic for
+      `calculate_position_details`. This function takes the signal (BUY/SELL),
+      account balance, and risk parameters to determine the **position size
+      (volume)**, **Stop Loss** price (ATR-based), and **Take Profit** price.
+
+## Detailed Execution Flow
+
+1.  The `Bot` starts and loads its configuration.
+2.  Enters an infinite loop running every few minutes.
+3.  Inside the loop, iterates over each `symbol` in the list.
+4.  Checks if it is a good time to trade that `symbol` according to
+    `symbols_config.py`.
+5.  If yes, requests market data for the main `timeframe` via the
+    `trading_client`.
+6.  Passes data to `add_all_indicators` to enrich the DataFrame.
+7.  The `Bot` calculates confluence scores (bullish and bearish) from the
+    enriched DataFrame.
+8.  Compares scores with `CONFLUENCE_THRESHOLD`.
+    - If neither score reaches the threshold, the decision is `HOLD` and moves to
+      the next symbol.
+    - If a score exceeds the threshold, a `BUY` or `SELL` signal is generated.
+9.  With a valid signal, calls `calculate_position_details` to get exact trade
+    parameters (volume, SL, TP).
+10. Finally, uses the `trading_client` to send the `open_position` order to the
+    exchange with all calculated details.
+11. The cycle repeats.
+
+---
+
+## 🇪🇸 Versión en Español
+
+# Arquitectura del Bot de Trading (Español)
 
 El bot está diseñado con una arquitectura modular y desacoplada, centrada en un
 núcleo de decisión (`Bot`) que orquesta el resto de los componentes. El flujo de
@@ -46,7 +156,7 @@ graph TD
     - **Orquestación**: Llama a los componentes de indicadores y de cliente de
       trading para obtener datos y ejecutar órdenes.
     - **Gestión Activa (Hilo Paralelo)**: Ejecuta un hilo independiente
-      (`_run_monitor`) que supervisa las posiciones abiertas cada 60 segundos
+      (`_run_monitor`) que supervisa las posiciones abiertas cada 1 segundo
       para aplicar lógica de cierres parciales y trailing stops sin bloquear el
       análisis de mercado.
 

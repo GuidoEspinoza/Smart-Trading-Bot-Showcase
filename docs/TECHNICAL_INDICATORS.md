@@ -1,4 +1,67 @@
-# Indicadores Técnicos Utilizados
+# Technical Indicators Used
+
+> **Choose Language / Elige Idioma**: [🇺🇸 English](#-english-version) | [🇪🇸 Español](#-versión-en-español)
+
+---
+
+## 🇺🇸 English Version
+
+The bot bases its confluence strategy on a set of proven technical indicators, each providing a different perspective on market state. All indicators are calculated using `pandas-ta` library.
+
+Below details indicators composing the scoring system and risk management.
+
+### 1. Exponential Moving Averages (EMAs)
+
+- **Definition**: Moving averages giving more weight to recent prices. Uses a fast EMA (e.g., 20) and slow EMA (e.g., 50).
+- **Strategy Role**: Determine short and medium-term trend direction/strength. Price/EMA alignment (Price > Fast > Slow) is strong uptrend signal.
+
+### 2. Ichimoku Cloud (Ichimoku Kinko Hyo)
+
+- **Definition**: Trend following system defining support/resistance zones.
+- **Strategy Role**: Confirm trend. If price above cloud (Senkou Span A/B), considered bullish. Below, bearish.
+
+### 3. Moving Average Convergence Divergence (MACD)
+
+- **Definition**: Momentum indicator showing relationship between two EMAs. Consists of MACD line, Signal line, Histogram.
+- **Strategy Role**:
+  - **Momentum**: MACD crossing Signal indicates increasing bullish momentum.
+  - **Acceleration**: Growing Histogram confirms accelerating momentum.
+
+### 4. Relative Strength Index (RSI)
+
+- **Definition**: Momentum oscillator measuring speed/change of price movements.
+- **Strategy Role**:
+  - **General Strength**: RSI > 50 indicates bullish strength prevails.
+  - **Divergences**: Bullish divergence (lower price, higher RSI) is a potent reversal signal with high score weight.
+
+### 5. Relative Volume (RVOL)
+
+- **Definition**: Measures current candle volume vs average volume of previous period.
+- **Strategy Role**: Validate conviction. High volume on trend breakout confirms interest, increasing continuation probability.
+
+### 6. Market Structure (Pivots)
+
+- **Definition**: Price action analysis identifying Higher Highs and Higher Lows.
+- **Strategy Role**: Confirm micro-trend formation. Most basic definition of uptrend.
+
+### 7. Average True Range (ATR)
+
+- **Definition**: Indicator measuring market volatility.
+- **Strategy Role**: Not for entry score, exclusively for **risk management**. Determines Dynamic Stop Loss distance, adapting to market conditions.
+
+### 8. Average Directional Index (ADX)
+
+- **Definition**: Oscillator (0-100) quantifying trend strength (regardless of direction).
+- **Strategy Role**: Acts as **market regime filter**.
+  - If ADX > Threshold, market trending. **Trade**.
+  - If ADX < Threshold, market ranging/sideways. **No Trade**.
+- **Innovation**: Bot uses **Adaptive Threshold per Session** (lower in Asia, higher in London/NY) to adapt to "noise" of each time of day.
+
+---
+
+# Indicadores Técnicos Utilizados (Español)
+
+## 🇪🇸 Versión en Español
 
 El bot basa su estrategia de confluencia en un conjunto de indicadores técnicos
 probados, cada uno aportando una perspectiva diferente sobre el estado del

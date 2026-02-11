@@ -1,4 +1,117 @@
-# Gestión de Riesgo y Tamaño de la Posición
+# Risk Management & Position Sizing
+
+> **Choose Language / Elige Idioma**: [🇺🇸 English](#-english-version) | [🇪🇸 Español](#-versión-en-español)
+
+---
+
+## 🇺🇸 English Version
+
+A profitable trading strategy depends not only on good entry signals but on exceptional risk management. The bot incorporates a **dynamic, three-pillar risk management system** to protect capital and maximize gains.
+
+All logic is encapsulated in the `calculate_position_details` function within `src/utils/risk_management.py`.
+
+## The 6 Pillars of Risk Management
+
+### 1. Fixed Risk Per Trade (`RISK_PER_TRADE_PERCENT`)
+
+This parameter, defined in `src/config/core_config.py`, is the foundation of the entire system.
+
+- **Definition**: The maximum percentage of total account capital willing to be lost in a single trade.
+- **Example**: If account balance is $10,000 and `RISK_PER_TRADE_PERCENT` is `1.0`, max risk is $100.
+- **Purpose**: Ensures no single trade causes catastrophic damage, allowing survival through losing streaks.
+
+### 2. Dynamic Stop Loss (ATR Based)
+
+Stop Loss is not fixed but adapts to current market volatility using the **Average True Range (ATR)**.
+
+- **Calculation**:
+  1.  Get current candle ATR.
+  2.  Multiply by `ATR_MULTIPLIER` (configurable).
+  3.  Subtract from entry (buy) or add to entry (sell).
+- **Formula (Buy)**:
+  `Stop Loss = Entry Price - (ATR * ATR_MULTIPLIER)`
+- **Purpose**: In volatile markets, ATR increases, widening Stop Loss to avoid noise "wick-outs". In calm markets, ATR decreases, tightening Stop Loss to protect gains.
+
+### 3. Take Profit (Risk/Reward Based)
+
+Profit target is calculated directly from Stop Loss distance to maintain a constant **Risk/Reward Ratio** (`RISK_REWARD_RATIO`).
+
+- **Calculation**:
+  1.  Calculate distance in pips/points from Entry to Stop Loss (`Risk in Pips`).
+  2.  Multiply by `RISK_REWARD_RATIO`.
+  3.  Add/Subtract from Entry Price.
+- **Formula (Buy)**:
+  `Take Profit = Entry Price + (Risk in Pips * RISK_REWARD_RATIO)`
+- **Purpose**: Ensures winning trades are, on average, significantly larger than losers. A `2.0` ratio means seeking $2 gain for every $1 risked.
+
+### 4. Scaled Partial Close Strategy 33/33/33 (Optimized)
+
+The bot implements a **scaled exit strategy** maximizing gains while progressively securing capital.
+
+#### TP1: First Partial Close (33% @ 0.75:1 R/R)
+
+- **Condition**: Price reaches 75% of initial risk distance.
+- **Action**: Closes **33% of volume**.
+- **Purpose**:
+  - Secure early profit.
+  - Reduce psychological risk.
+  - Fund the "free ride" for remaining position.
+- **Formula (Buy)**:
+  `TP1 = Entry Price + (Risk in Pips * 0.75)`
+
+#### TP2: Second Partial Close (33% @ 1.5:1 R/R)
+
+- **Condition**: Price reaches 1.5x initial risk.
+- **Action**: Closes another **33% of volume**.
+- **Effect**:
+  - Locks in substantial gain (66% of position closed in profit).
+  - Mathematically impossible to lose money on the total trade from here.
+  - Activates trailing stop for remaining 34%.
+- **Formula (Buy)**:
+  `TP2 = Entry Price + (Risk in Pips * 1.5)`
+
+#### TP3: Trailing Stop (Remaining 34% - "Let Winners Run")
+
+For the **remaining 34%**, the bot activates a dynamic trailing stop chasing the trend.
+
+- **Activation**: Automatic after TP2 close.
+- **Mechanism**: Stop Loss adjusts dynamically to lock in accumulated profit while allowing capture of extended moves.
+- **Execution**: Updates Stop Level on broker (Capital.com).
+- **Purpose**: Capture "Home Runs" (massive trends) that exponentially multiply PnL.
+
+#### Advantages of 33/33/33 Strategy
+
+1. **Progressive Securing**: Three profit-taking levels gradually reduce risk.
+2. **Mathematical Optimization**: Backtests show +217% profitability with 84.40% win rate (Dec 2025).
+3. **Psychological Balance**: Combines safety (early closes) with big win potential (trailing stop).
+4. **Size Management**: Tracks original size to ensure correct percentages at each close.
+
+### 5. Minimum Size Validation
+
+Before each partial close, validates that both closing size and remaining size are >= symbol's `min_deal_size`.
+
+- **Condition**: If position too small to split.
+- **Action**: Closes entire position to secure profit.
+- **Purpose**: Prevents execution errors due to invalid sizes.
+
+## Position Sizing Calculation (Volume)
+
+Knowing dollar risk and Stop Loss distance in pips, the bot calculates exact position size.
+
+- **Simplified Formula**:
+  `Position Size = Dollar Risk / (Stop Loss Distance in Pips * Pip Value)`
+- **Process**:
+  1.  **Dollar Risk**: `Account Balance * (RISK_PER_TRADE_PERCENT / 100)`
+  2.  **Stop Loss Distance**: `abs(Entry Price - Stop Loss Price)`
+  3.  Calculates volume needed so if price hits Stop Loss, loss is exactly defined `Dollar Risk`.
+
+This integrated approach ensures every trade opens with a complete, predefined risk plan, eliminating emotional decision making and maintaining long-term discipline.
+
+---
+
+# Gestión de Riesgo y Tamaño de la Posición (Español)
+
+## 🇪🇸 Versión en Español
 
 Una estrategia de trading rentable no solo depende de buenas señales de entrada,
 sino de una gestión de riesgo excepcional. El bot incorpora un sistema de
