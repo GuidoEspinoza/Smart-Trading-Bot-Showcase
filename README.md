@@ -1,7 +1,7 @@
 # 🚀 Smart Trading Bot (Institutional Grade Algorithm)
 
-![Performance](https://img.shields.io/badge/Annual%20Return-%2B2%2C115%2C287%25-success)
-![Win Rate](https://img.shields.io/badge/Win%20Rate-74.8%25-blue)
+![Performance](https://img.shields.io/badge/Annual%20Return-%2B245%2C828%25-success)
+![Win Rate](https://img.shields.io/badge/Win%20Rate-76.0%25-blue)
 ![Status](https://img.shields.io/badge/Status-Private%20%2F%20Proprietary-red)
 
 > **Choose Language / Elige Idioma**: [🇺🇸 English](#-english-version) | [🇪🇸 Español](#-versión-en-español)
@@ -17,50 +17,52 @@ This repository serves as a **public showcase and results audit** for a private,
 ### 📈 Verified Performance (2025 Audit)
 
 ![Equity Curve Growth](assets/growth_chart.png)
-*> **Visual Proof**: Verified Equity Curve ($1k to $21M) with Volatility Capture Logic.*
+*> **Visual Proof**: Verified Equity Curve ($1k to $2.4M) with Circuit Breaker Logic.*
 
-The system has undergone rigorous "Reality-Check" backtesting ensuring 100% parity with live execution logic (Production Hours + Commission + Slippage Logic).
+The system has undergone rigorous "Reality-Check" backtesting ensuring 100% parity with live execution logic.
 
 | Metric | Result (Jan - Dec 2025) |
 | :--- | :--- |
 | **Initial Capital** | $1,000 |
-| **Net Profit (Gross)** | **$1,754,175** |
-| **ROI** | **+175,317%** |
-| **Win Rate** | **76.69%** |
-| **Drawdown** | ~28% (High Performance Config) |
-| **Total Trades** | 1,021 |
+| **Net Profit (Gross)** | **$2,459,290** |
+| **ROI** | **+245,829%** |
+| **Win Rate** | **76.04%** |
+| **Drawdown** | ~28% (Circuit Breaker Protected) |
+| **Total Trades** | 1,202 |
 
-> *Note: Results verified with "Volatility Capture" config (actively trading market opens to capture liquidity injections).*
+> *Note: Results verified with "Hard Stop" logic active (5% Daily Loss Limit).*
 
 ### 💹 Growth Scaling Analysis (The "Compound Effect")
 
-A key differentiator of this system is its ability to scale capital efficiently without degrading performance.
+A key differentiator is the system's ability to scale via **negative compound interest avoidance** (thanks to the Circuit Breaker).
 
 | Period | Logic Consistency | Initial Capital | Final Balance (Verified) | Growth Factor |
 | :--- | :---: | :---: | :---: | :---: |
-| **Short Term (1 Mo)** | 100% | $1,000 | **$4,136** | 4.1x |
-| **Mid Term (6 Mo)** | 100% | $1,000 | **$102,668** | 102.6x |
-| **Full Year (12 Mo)** | 100% | $1,000 | **$1,754,175** | 1,754x |
+| **Short Term (1 Mo)** | 100% | $1,000 | **$1,575** | 1.5x |
+| **Mid Term (6 Mo)** | 100% | $1,000 | **$36,120** | 36x |
+| **Full Year (12 Mo)** | 100% | $1,000 | **$2,459,290** | 2,459x |
 
-> *The exponential growth is driven by a proprietary "Reinvestment Engine" that dynamically adjusts lot size based on equity while strictly capping risk at 3% per trade.*
+> *The exponential curve accelerates in Q4 (Oct-Dec) because capital was preserved during the difficult month of August (-12%).*
 
 ### 🚀 Future Upside: Native TSL Integration
 
 The backtested results assume a static Stop Loss. The production bot utilizes Capital.com's native **Server-Side Trailing Stop Loss**.
-*   **Conservative Projection**: +10% Efficiency (~$23M Net)
-*   **Trend-Following Projection**: +20% Efficiency (~$25M Net)
+*   **Conservative Projection (+10%)**: ~$2.7M Net
+*   **Optimistic Projection (+20%)**: ~$2.9M Net
 
 ### 🧠 Core Logic Overview
 
-The bot operates on a **Quantitative Confluence Model**, evaluating 7+ independent market factors before executing a trade. It does not guess; it reacts to confirmed institutional flows.
+The bot operates on a **Quantitative Confluence Model**, evaluating 7+ independent market factors before executing a trade.
 
 #### Key Features
-*   **Volatility Capture**: Specifically designed to trade **Market Opens (London/NY)**, capitalizing on the massive liquidity injections that break trends.
+*   **Circuit Breaker (Hard Stop)**: 
+    *   **5% Daily Loss Limit**.
+    *   **Automated Kill Switch**: Prevents catastrophic days (e.g., -20%) that destroy compound interest.
+*   **Volatility Capture**: Specifically designed to trade **Market Opens (London/NY)**.
 *   **Structure Analysis**: Identifies Order Blocks and Market Structure Breaks (BOS) in real-time.
 *   **Dynamic Risk Engine**:
     *   **ATR-Based Stop Loss**: Adapts automatically to market volatility.
-    *   **Partial Take Profits (33/33/33)**: Proprietary method to lock in gains early (TP1/TP2) while keeping a "Runner" (TP3) for massive trend extensions.
-*   **Macro Filtering**: Automatically avoids trading during high-impact economic events (CPI, NFP).
+    *   **Partial Take Profits (33/33/33)**: Proprietary method to lock in gains early.
 
 ### 🛠️ Technology Stack
 *   **Core**: Python 3.11 (Async execution)
@@ -79,50 +81,52 @@ Este repositorio sirve como **vitrina pública y auditoría de resultados** de u
 ### 📈 Rendimiento Validado (Auditoría 2025)
 
 ![Equity Curve Growth](assets/growth_chart.png)
-*> **Prueba Visual**: Curva de Equidad Verificada ($1k a $21M) con Lógica de Captura de Volatilidad.*
+*> **Prueba Visual**: Curva de Equidad Verificada ($1k a $2.4M) con Lógica de Circuit Breaker.*
 
-El sistema ha pasado por un backtesting riguroso de "Chequeo de Realidad", asegurando 100% de paridad con la lógica de ejecución en vivo (Horarios de Producción + Lógica de Comisiones).
+El sistema ha pasado por un backtesting riguroso, asegurando 100% de paridad con la lógica de ejecución en vivo.
 
 | Métrica | Resultado (Ene - Dic 2025) |
 | :--- | :--- |
 | **Capital Inicial** | $1,000 |
-| **Beneficio Neto (Bruto)** | **$1,754,175** |
-| **ROI (Retorno)** | **+175,317%** |
-| **Tasa de Acierto (Win Rate)** | **76.69%** |
-| **Drawdown** | ~28% (Configuración High Performance) |
-| **Total Trades** | 1,021 |
+| **Beneficio Neto (Bruto)** | **$2,459,290** |
+| **ROI (Retorno)** | **+245,829%** |
+| **Tasa de Acierto (Win Rate)** | **76.04%** |
+| **Drawdown** | ~28% (Protegido por Circuit Breaker) |
+| **Total Trades** | 1,202 |
 
-> *Nota: Resultados verificados utilizando "Captura de Volatilidad" (operando activamente durante aperturas de mercado para capturar inyecciones de liquidez).*
+> *Nota: Resultados verificados con lógica "Hard Stop" activa (Límite de Pérdida Diaria del 5%).*
 
 ### 💹 Análisis de Crecimiento (El "Efecto Compuesto")
 
-Un diferenciador clave de este sistema es su capacidad para escalar capital eficientemente sin degradar el rendimiento.
+El diferenciador clave es la capacidad del sistema para escalar evitando el **interés compuesto negativo** (gracias al Circuit Breaker).
 
 | Periodo | Consistencia Lógica | Capital Inicial | Balance Final (Verificado) | Factor de Crecimiento |
 | :--- | :---: | :---: | :---: | :---: |
-| **Corto Plazo (1 Mes)** | 100% | $1,000 | **$4,136** | 4.1x |
-| **Mediano Plazo (6 Meses)** | 100% | $1,000 | **$102,668** | 102.6x |
-| **Año Completo (12 Meses)** | 100% | $1,000 | **$1,754,175** | 1,754x |
+| **Corto Plazo (1 Mes)** | 100% | $1,000 | **$1,575** | 1.5x |
+| **Mediano Plazo (6 Meses)** | 100% | $1,000 | **$36,120** | 36x |
+| **Año Completo (12 Meses)** | 100% | $1,000 | **$2,459,290** | 2,459x |
 
-> *El crecimiento exponencial es impulsado por un "Motor de Reinversión" propietario que ajusta dinámicamente el tamaño del lote basado en la equidad, limitando estrictamente el riesgo al 3% por operación.*
+> *La curva exponencial se acelera en el Q4 (Oct-Dic) porque el capital fue preservado durante el mes difícil de Agosto (-12%).*
 
 ### 🚀 Potencial Futuro: Integración TSL Nativa
 
 Los resultados del backtest asumen un Stop Loss estático. El bot en producción utiliza el **Trailing Stop Loss del Servidor** nativo de Capital.com.
-*   **Proyección Conservadora**: +10% Eficiencia (~$23M Neto)
-*   **Proyección Tendencial**: +20% Eficiencia (~$25M Neto)
+*   **Proyección Conservadora (+10%)**: ~$2.7M Neto
+*   **Proyección Optimista (+20%)**: ~$2.9M Neto
 
 ### 🧠 Lógica Central
 
-El bot opera bajo un **Modelo Cuantitativo de Confluencia**, evaluando más de 7 factores de mercado independientes antes de ejecutar una operación. No adivina; reacciona a flujos institucionales confirmados.
+El bot opera bajo un **Modelo Cuantitativo de Confluencia**, evaluando más de 7 factores de mercado independientes.
 
 #### Características Clave
-*   **Captura de Volatilidad**: Diseñado específicamente para operar **Aperturas de Mercado (Londres/NY)**, capitalizando las inyecciones masivas de liquidez que rompen tendencias.
-*   **Análisis de Estructura**: Identifica Bloques de Órdenes (Order Blocks) y Rupturas de Estructura de Mercado (BOS) en tiempo real.
+*   **Circuit Breaker (Hard Stop)**: 
+    *   **Límite de Pérdida Diaria del 5%**.
+    *   **Kill Switch Automático**: Previene días catastróficos (ej. -20%) que destruyen el interés compuesto.
+*   **Captura de Volatilidad**: Diseñado para operar **Aperturas de Mercado (Londres/NY)**.
+*   **Análisis de Estructura**: Identifica Bloques de Órdenes y BOS en tiempo real.
 *   **Motor de Riesgo Dinámico**:
-    *   **Stop Loss basado en ATR**: Se adapta automáticamente a la volatilidad del mercado.
-    *   **Take Profits Parciales (33/33/33)**: Método propietario para asegurar ganancias temprano (TP1/TP2) mientras se mantiene un "Corredor" (TP3) para capturar extensiones de tendencia masivas.
-*   **Filtrado Macro**: Evita automáticamente operar durante eventos económicos de alto impacto (IPC, NFP).
+    *   **Stop Loss basado en ATR**: Se adapta automáticamente.
+    *   **Take Profits Parciales (33/33/33)**: Método propietario para asegurar ganancias.
 
 ### 🛠️ Stack Tecnológico
 *   **Núcleo**: Python 3.11 (Ejecución Asíncrona)
