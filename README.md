@@ -1,7 +1,7 @@
 # 🚀 Smart Trading Bot (Institutional Grade Algorithm)
 
-![Performance](https://img.shields.io/badge/Annual%20Return-%2B245%2C828%25-success)
-![Win Rate](https://img.shields.io/badge/Win%20Rate-76.0%25-blue)
+![Performance](https://img.shields.io/badge/Annual%20Return-%2B174%2C457%25-success)
+![Win Rate](https://img.shields.io/badge/Win%20Rate-75.0%25-blue)
 ![Status](https://img.shields.io/badge/Status-Private%20%2F%20Proprietary-red)
 
 > **Choose Language / Elige Idioma**: [🇺🇸 English](#-english-version) | [🇪🇸 Español](#-versión-en-español)
@@ -14,23 +14,23 @@
 This repository serves as a **public showcase and results audit** for a private, institutional-grade trading system.
 **The source code is closed-source and strictly protected. This is NOT an open-source project.**
 
-### 📈 Verified Performance (2025 Audit)
+### 📈 Verified Performance (2025 Audit - Real Spreads)
 
 ![Equity Curve Growth](assets/growth_chart.png)
-*> **Visual Proof**: Verified Equity Curve ($1k to $2.4M) with Circuit Breaker Logic.*
+*> **Visual Proof**: Verified Equity Curve ($1k to $1.7M) with Real Spreads & Circuit Breaker Logic.*
 
-The system has undergone rigorous "Reality-Check" backtesting ensuring 100% parity with live execution logic.
+The system has undergone rigorous "Reality-Check" backtesting ensuring 100% parity with live execution logic, including **Real-Time Spreads**.
 
 | Metric | Result (Jan - Dec 2025) |
 | :--- | :--- |
 | **Initial Capital** | $1,000 |
-| **Net Profit (Gross)** | **$2,459,290** |
-| **ROI** | **+245,829%** |
-| **Win Rate** | **76.04%** |
-| **Drawdown** | ~28% (Circuit Breaker Protected) |
-| **Total Trades** | 1,202 |
+| **Net Profit (Gross)** | **$1,744,577** |
+| **ROI** | **+174,457%** |
+| **Win Rate** | **74.69%** |
+| **Drawdown** | ~16% (Circuit Breaker Protected) |
+| **Total Trades** | 1,221 |
 
-> *Note: Results verified with "Hard Stop" logic active (5% Daily Loss Limit).*
+> *Note: Results verified with "Hard Stop" logic active (5% Daily Loss Limit) and Live Spread injection.*
 
 ### 💹 Growth Scaling Analysis (The "Compound Effect")
 
@@ -38,17 +38,17 @@ A key differentiator is the system's ability to scale via **negative compound in
 
 | Period | Logic Consistency | Initial Capital | Final Balance (Verified) | Growth Factor |
 | :--- | :---: | :---: | :---: | :---: |
-| **Short Term (1 Mo)** | 100% | $1,000 | **$1,575** | 1.5x |
-| **Mid Term (6 Mo)** | 100% | $1,000 | **$36,120** | 36x |
-| **Full Year (12 Mo)** | 100% | $1,000 | **$2,459,290** | 2,459x |
+| **Short Term (1 Mo)** | 100% | $1,000 | **$1,620** | 1.6x |
+| **Mid Term (6 Mo)** | 100% | $1,000 | **$36,985** | 37x |
+| **Full Year (12 Mo)** | 100% | $1,000 | **$1,745,577** | 1,745x |
 
-> *The exponential curve accelerates in Q4 (Oct-Dec) because capital was preserved during the difficult month of August (-12%).*
+> *The exponential curve accelerates in Q4 (Oct-Dec) because capital was preserved during the difficult month of August (-16%).*
 
 ### 🚀 Future Upside: Native TSL Integration
 
 The backtested results assume a static Stop Loss. The production bot utilizes Capital.com's native **Server-Side Trailing Stop Loss**.
-*   **Conservative Projection (+10%)**: ~$2.7M Net
-*   **Optimistic Projection (+20%)**: ~$2.9M Net
+*   **Conservative Projection (+10%)**: ~$1.9M Net
+*   **Optimistic Projection (+20%)**: ~$2.1M Net
 
 ### 🧠 Core Logic Overview
 
