@@ -82,7 +82,7 @@ For the **remaining 34%**, the bot activates a dynamic trailing stop chasing the
 #### Advantages of 33/33/33 Strategy
 
 1. **Progressive Securing**: Three profit-taking levels gradually reduce risk.
-2. **Mathematical Optimization**: Backtests show +217% profitability with 84.40% win rate (Dec 2025).
+2. **Mathematical Optimization**: Backtests show **exponential growth potential ($2.6B Theoretical)** with **72.7%** win rate (2025).
 3. **Psychological Balance**: Combines safety (early closes) with big win potential (trailing stop).
 4. **Size Management**: Tracks original size to ensure correct percentages at each close.
 
@@ -106,7 +106,7 @@ The **Circuit Breaker** is the system's ultimate fail-safe, designed to preserve
 - **Performance Impact**:
     - Prevents "bad days" from becoming catastrophic (e.g., -20%).
     - Preserves base capital for compound interest to work effectively the next day.
-    - Verified to increase annual yield from **$1.7M** to **$2.4M** by cutting loss tails.
+    - Verified to enable the exponential curve by cutting loss tails in difficult months (e.g. August).
 
 ## Position Sizing Calculation (Volume)
 
@@ -233,8 +233,7 @@ stop dinámico que persigue la tendencia.
 
 1. **Aseguramiento Progresivo**: Tres niveles de toma de ganancias reducen el 
    riesgo gradualmente.
-2. **Optimización Matemática**: Backtests demuestran +217% de rentabilidad con 
-   84.40% win rate en diciembre 2025.
+2. **Optimización Matemática**: Backtests demuestran **crecimiento exponencial ($2.6 Billones Teóricos)** con **72.7%** de win rate en 2025.
 3. **Balance Psicológico**: Combina seguridad (cierres tempranos) con potencial 
    de ganancias grandes (trailing stop).
 4. **Gestión de Tamaño**: Tracking del tamaño original asegura porcentajes 
@@ -263,7 +262,7 @@ El **Circuit Breaker** (Hard Stop) es la "válvula de seguridad" final del siste
 - **Impacto en Rendimiento**:
     - Evita que un "mal día" se convierta en una catástrofe (ej. -20%).
     - Preserva el capital base para que el interés compuesto funcione al día siguiente.
-    - Transformó el rendimiento anual 2025 de **$1.7M** a **$2.4M** al cortar las colas de pérdida.
+    - Transformó el rendimiento anual 2025 asegurando la supervivencia de la cuenta y la explosión compuesta posterior.
 
 ## El Cálculo del Tamaño de la Posición (Volumen)
 

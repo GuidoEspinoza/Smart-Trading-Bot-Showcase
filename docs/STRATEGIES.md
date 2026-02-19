@@ -92,7 +92,7 @@ The bot uses a **Scaled Exits (33/33/33)** strategy to balance security with mas
 
 ## Decision Example
 
-- `GOLD` analyzed on `15M` timeframe.
+- `GOLD` analyzed on `5M` timeframe (Entry) with `30M` Bias.
 - All indicators calculated.
 - Bot determines 7 of 9 bullish conditions met -> `Bullish Score = 7`.
 - 1 of 9 bearish conditions met -> `Bearish Score = 1`.
@@ -226,7 +226,7 @@ El bot utiliza una estrategia de **Salidas Escalonadas (33/33/33)** para equilib
 
 ## Ejemplo de Decisión
 
-- Se analiza el par `GOLD` en la temporalidad de `15M`.
+- Se analiza el par `GOLD` en la temporalidad de `5M` (Entry) con Bias de `30M`.
 - Se calculan todos los indicadores.
 - El bot determina que se cumplen 7 de las 9 condiciones alcistas ->
   `Bullish Score = 7`.
