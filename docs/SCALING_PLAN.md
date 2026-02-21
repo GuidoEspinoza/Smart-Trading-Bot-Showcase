@@ -28,7 +28,7 @@ The strategy acts as an initial "Booster" to capitalize small accounts, followed
     *   `RISK_PER_TRADE_PERCENT`: **3.0%** (Optimized for 30m/5m frequency)
     *   `DAILY_PROFIT_TARGET_PERCENT`: **10%**
     *   `ACTIVE_PROFILE`: "Growth Mode" (30m Bias / 5m Entry)
-    *   `AVOID_MARKET_OPEN_HOURS`: **False** (Volatility Capture Active)
+    *   `AVOID_MARKET_OPEN_HOURS`: **True** (Noise/Volatility Filtering Active)
 *   **Management:**
     *   **Withdrawals:** None. Reinvest all to maximize compound interest.
     *   **Daily Stop Loss:** If lose 5% (Circuit Breaker), Stop.
@@ -81,7 +81,7 @@ La estrategia se basa en un enfoque de "Booster" inicial para capitalizar cuenta
     *   `RISK_PER_TRADE_PERCENT`: **3.0%** (Optimizado para frecuencia 30m/5m)
     *   `DAILY_PROFIT_TARGET_PERCENT`: **10%**
     *   `ACTIVE_PROFILE`: "Growth Mode" (30m Bias / 5m Entry)
-    *   `AVOID_MARKET_OPEN_HOURS`: **False** (Captura de Volatilidad Activada)
+    *   `AVOID_MARKET_OPEN_HOURS`: **True** (Filtro de Ruido/Volatilidad Activado)
 *   **Gestión:**
     *   **Retiros:** Ninguno. Reinvertir todo para maximizar el interés compuesto.
     *   **Stop Loss Diario:** Si pierdes 5% (Circuit Breaker), Stop.

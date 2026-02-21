@@ -102,7 +102,7 @@ The bot operates in a logical and predictable cycle.
 3.  **Decision Filters (Gatekeepers)**:
     - **Reset Time?**: Checks if daily reset hour (`DAILY_RESET_HOUR`) has passed to reset stats.
     - **Operating Hours?**: Checks if current time is within `OPERATING_HOURS` and if market for at least one symbol is open (`is_market_open`).
-    - **Danger Window?**: Checks if current time falls within `MARKET_OPEN_AVOID_WINDOWS` (only if enabled for Preservation Phase).
+    - **Danger Window?**: Checks if current time falls within `MARKET_OPEN_AVOID_WINDOWS` (Noise/Volatility Filter).
     - **Profit Target Met?**: Calls `_check_profit_target()` to see if current equity reached daily target. If so, bot "sleeps" until next reset.
     - **Circuit Breaker?**: Checks if daily loss exceeds 5%. If s, halts trading.
 
@@ -343,8 +343,7 @@ El bot opera en un ciclo lógico y predecible.
     - **¿Estamos en Horario de Operación?**: Verifica que la hora actual esté
       dentro del `OPERATING_HOURS` y que el mercado para al menos uno de los
       símbolos esté abierto (`is_market_open`).
-    - **¿Estamos en una Ventana de Peligro?**: Comprueba si la hora actual cae
-      dentro de las `MARKET_OPEN_AVOID_WINDOWS` (solo si está activo en Fase Preservación).
+    - **¿Estamos en una Ventana de Peligro?**: Comprueba si la hora actual cae dentro de las `MARKET_OPEN_AVOID_WINDOWS` (Filtro de Ruido/Volatilidad).
     - **¿Hemos Ganado Suficiente?**: Llama a `_check_profit_target()` para ver
       si la equidad actual ha alcanzado el objetivo diario. Si es así, el bot se
       "duerme" hasta el próximo reseteo.
