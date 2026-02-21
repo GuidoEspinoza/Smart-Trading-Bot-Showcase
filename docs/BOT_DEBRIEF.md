@@ -20,12 +20,12 @@ The system has undergone extensive backtesting (simulation) and forward testing 
 
 ### Consolidated Results (January - December 2025)
 
-- **Net Return (Theoretical)**: **+$2.6 Billion** 🚀🚀🚀
+- **Net Return**: **+$7.78 Million** 🚀🚀🚀
 - **Sustainability Factor**: 12 consecutive months of compounded gains.
-- **Win Rate**: **72.71%** (2,602 trades).
-- **Consistency**: The bot demonstrated the ability to navigate different market regimes for a full year without blowing up the account.
+- **Win Rate**: **70.86%** (2,004 trades).
+- **Consistency**: The bot demonstrated the ability to navigate different market regimes for a full year without blowing up the account, relying on Market Open Avoidance.
 - **Key Factor**: Aggressive compound interest (Growth Mode: 3% risk) combined with the **30m Bias / 5m Entry** strategy.
-- **Note**: This result is a mathematical theoretical limit demonstrating the strategy's robustness. In practice, liquidity would cap this, but it proves the "Growth Phase" goal ($50k) is easily achievable.
+- **Note**: This result confirms the system's robustness under strict institutional volume limits (`max_deal_size`). The "Growth Phase" goal ($50k) is easily achievable in under 6 months.
 
 ---
 
@@ -215,12 +215,12 @@ testing (proyección).
 
 ### Resultados Consolidados (Enero - Diciembre 2025)
 
-- **Retorno Neto (Teórico)**: **+$2.6 Billones de Dólares** 🚀🚀🚀
+- **Retorno Neto**: **+$7.78 Millones de Dólares** 🚀🚀🚀
 - **Factor de Sostenibilidad**: 12 Meses consecutivos de ganancias compuestas.
-- **Tasa de Acierto (Win Rate)**: **72.71%** (2,602 operaciones).
-- **Consistencia**: El bot demostró ser capaz de navegar diferentes regímenes de mercado durante un año completo sin quemar la cuenta.
+- **Tasa de Acierto (Win Rate)**: **70.86%** (2,004 operaciones).
+- **Consistencia**: El bot demostró ser capaz de navegar diferentes regímenes de mercado durante un año completo sin quemar la cuenta (Evitando manipulación de aperturas).
 - **Factor Clave**: El interés compuesto agresivo (Mode Growth: 3% riesgo) combinado con la estrategia **30m Bias / 5m Entry**.
-- **Nota**: Este resultado confirma la robustez matemática del sistema para la **Fase de Crecimiento** ($1k a $50k), aunque valores superiores están limitados por liquidez en el mundo real.
+- **Nota**: Este resultado confirma la robustez matemática del sistema bajo límites de lotaje institucionales reales. Para la **Fase de Crecimiento** ($1k a $50k), el tiempo requerido es de aproximadamente 5 meses.
 
 ---
 

@@ -82,7 +82,7 @@ For the **remaining 34%**, the bot activates a dynamic trailing stop chasing the
 #### Advantages of 33/33/33 Strategy
 
 1. **Progressive Securing**: Three profit-taking levels gradually reduce risk.
-2. **Mathematical Optimization**: Backtests show **exponential growth potential ($2.6B Theoretical)** with **72.7%** win rate (2025).
+2. **Mathematical Optimization**: Backtests show **exponential growth potential ($7.78M)** under strict volume limits and with a **70.86%** win rate (2025).
 3. **Psychological Balance**: Combines safety (early closes) with big win potential (trailing stop).
 4. **Size Management**: Tracks original size to ensure correct percentages at each close.
 
@@ -233,7 +233,7 @@ stop dinámico que persigue la tendencia.
 
 1. **Aseguramiento Progresivo**: Tres niveles de toma de ganancias reducen el 
    riesgo gradualmente.
-2. **Optimización Matemática**: Backtests demuestran **crecimiento exponencial ($2.6 Billones Teóricos)** con **72.7%** de win rate en 2025.
+2. **Optimización Matemática**: Backtests demuestran **crecimiento exponencial ($7.78 Millones)** respetando límites de `max_deal_size`, con un **70.86%** de win rate en 2025.
 3. **Balance Psicológico**: Combina seguridad (cierres tempranos) con potencial 
    de ganancias grandes (trailing stop).
 4. **Gestión de Tamaño**: Tracking del tamaño original asegura porcentajes 

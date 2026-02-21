@@ -29,7 +29,7 @@ This is the most important variable of the strategy, defined in `src/config/prof
 
 - **Definition**: The minimum score that must be reached for a `BUY` or `SELL` signal to be valid.
 - **Purpose**: Acts as a **quality filter**. A higher threshold (e.g., 5) means the bot will be more selective and only trade on the strongest signals.
-- **Optimal Configuration (Validated)**: `5`. This value has shown to offer the best balance between frequency and profitability (Win Rate 75%+).
+- **Optimal Configuration (Validated)**: `5`. This value has shown to offer the best balance between frequency and profitability (Win Rate ~71%).
 
 ## Scoring Conditions
 
@@ -144,7 +144,7 @@ Esta es la variable más importante de la estrategia, definida en
   significa que el bot será más selectivo y solo operará en las señales más
   fuertes.
 - **Configuración Óptima (Validada)**: `5`. Este valor ha demostrado ofrecer el
-  mejor equilibrio entre frecuencia y rentabilidad (Win Rate 75%+).
+  mejor equilibrio entre frecuencia y rentabilidad (Win Rate ~71%).
 
 ## Condiciones de Puntuación
 
